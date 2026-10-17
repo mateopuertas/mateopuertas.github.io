@@ -135,3 +135,9 @@ Pour ajouter des sous-titres à une autre vidéo, crée un fichier `.vtt` et ind
 
 En haut de `assets/css/style.css`, les variables `:root` contrôlent tout :
 `--g1` à `--g4` (couleurs des halos), `--peach` / `--sienna` (carte d'accent), `--serif` / `--sans` (typographies).
+
+## CV
+
+- `assets/cv/CV-Mateo-Puertas.pdf` : version **web**, sans adresse ni téléphone. C'est celle que le bouton « Télécharger mon CV » du site propose.
+- `CV/CV-Mateo-Puertas-complet.pdf` : version **complète** (adresse, téléphone, âge), à joindre à tes candidatures par mail. Le dossier `CV/` n'est **jamais publié** sur le site.
+- Pour modifier le CV, édite `CV/cv.html`, puis demande à Claude de régénérer les deux PDF.

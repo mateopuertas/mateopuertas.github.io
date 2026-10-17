@@ -831,6 +831,7 @@
       if (v.tagName === 'VIDEO' && v.dataset.track && !v.dataset.tracked) { v.dataset.tracked = '1'; track(v.dataset.track); }
     }, true);
     document.addEventListener('click', e => {
+      if (e.target.closest('[data-cv]')) { track('cv/telechargement'); return; }
       const a = e.target.closest('a[href^="mailto:"], [data-copy-mail], a[href*="linkedin.com"], a[href*="youtube.com/@"]');
       if (!a) return;
       track(a.matches('[data-copy-mail]') ? 'contact/copie-email' : a.href.startsWith('mailto:') ? 'contact/email' : a.href.includes('linkedin') ? 'contact/linkedin' : 'contact/youtube');
