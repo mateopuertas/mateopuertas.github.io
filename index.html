@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matéo Puertas — Monteur & motion designer</title>
+  <meta name="description" content="Portfolio de Matéo Puertas, monteur vidéo, motion designer et créateur de contenu. Étudiant BUT MMI à Béziers, disponible en stage d'avril à juin 2027.">
+  <meta property="og:title" content="Matéo Puertas — Monteur & motion designer">
+  <meta property="og:description" content="50M+ vues, 30k+ abonnés, 7 marques partenaires. Disponible en stage d'avril à juin 2027.">
+  <meta property="og:image" content="https://dingovlr.github.io/assets/img/og-image.jpg">
+  <meta property="og:url" content="https://dingovlr.github.io/">
+  <link rel="canonical" href="https://dingovlr.github.io/">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/geist-normal-300-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="preload" href="assets/videos/hero-reel.mp4" as="video" type="video/mp4">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    /* Mode jour à l'arrivée ; le mode nuit choisi est gardé pendant la visite */
+    try {
+      localStorage.removeItem('theme');
+      if (sessionStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+    } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body>
+
+  <!-- ============ CURSEUR ============ -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" data-nav>
+    <a href="#top" class="nav__logo" aria-label="Matéo Puertas, retour en haut">
+      <span class="logo-mark" data-logo>mp<i>.</i></span>
+      <span class="nav__logo-text">Matéo Puertas</span>
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#motion">Motion</a>
+      <a href="#montage">Montage</a>
+      <a href="#communication">Communication</a>
+      <a href="#a-propos">À propos</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-toggle" type="button" aria-label="Changer de thème" data-theme-toggle>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--fill btn--sm magnetic nav__cta">Me contacter</a>
+      <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" data-menu aria-hidden="true">
+    <nav class="menu__links">
+      <a href="#motion"><span class="mono">03</span>Motion</a>
+      <a href="#montage"><span class="mono">04</span>Montage</a>
+      <a href="#communication"><span class="mono">05</span>Communication</a>
+      <a href="#a-propos"><span class="mono">06</span>À propos</a>
+      <a href="#contact"><span class="mono">07</span>Contact</a>
+    </nav>
+    <p class="menu__foot mono"><span class="dot"></span> Disponible · stage avril → juin 2027</p>
+  </div>
+
+  <!-- ============ TIMELINE DE SCROLL ============ -->
+  <div class="timeline" aria-hidden="true" data-timeline>
+    <span class="timeline__tc mono" data-timecode>00:00:00:00</span>
+    <div class="timeline__track">
+      <div class="timeline__fill"></div>
+      <div class="timeline__markers" data-markers></div>
+      <div class="timeline__head"></div>
+    </div>
+    <span class="timeline__rec mono"><i></i>REC</span>
+  </div>
+
+  <main id="top" data-lenis-content>
+
+    <!-- ============ HERO : la vidéo joue dans les lettres ============ -->
+    <section class="hero" data-chapter="Intro" data-hero>
+      <div class="hero__media">
+        <video class="hero__video" muted loop playsinline preload="auto" src="assets/videos/hero-reel.mp4" poster="assets/img/hero-reel.jpg" data-hero-video></video>
+      </div>
+
+      <!-- Calque masque : fond plein, lettres « transparentes » sur la vidéo -->
+      <div class="hero__layer hero__mask" data-hero-mask>
+        <!-- Le reste du calque est recopié depuis le calque interface par main.js, pour un alignement parfait -->
+        <div class="hero__inner">
+          <h1 class="hero__big"><span class="sr-only">Des vidéos qu'on regarde </span><span class="hero__line">Jusqu'au</span><span class="hero__line">bout.</span></h1>
+        </div>
+      </div>
+
+      <!-- Calque interface -->
+      <div class="hero__layer hero__ui" data-hero-ui>
+        <div class="glow glow--hero" aria-hidden="true"><span></span><span></span></div>
+        <div class="hero__inner">
+          <p class="pill-status" data-hero-fade><span class="dot"></span>Disponible · stage d'avril à juin 2027</p>
+          <p class="hero__kicker" data-hero-fade>Des vidéos qu'on regarde</p>
+          <div class="hero__big ghost" aria-hidden="true"><span class="hero__line">Jusqu'au</span><span class="hero__line">bout.</span></div>
+          <div class="hero__foot" data-hero-fade>
+            <p class="hero__sub"><strong>Matéo Puertas</strong> · monteur, motion designer & créateur de contenu</p>
+            <div class="btn-row">
+              <a href="#showreel" class="btn btn--fill magnetic">
+                <svg viewBox="0 0 24 24" class="i-play" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                Voir le showreel
+              </a>
+              <a href="#contact" class="btn btn--ghost magnetic">Me contacter</a>
+            </div>
+          </div>
+        </div>
+        <span class="hero__tc mono" aria-hidden="true"><i></i><span data-live-tc>00:00:00:00</span></span>
+
+        <!-- Cartes flottantes -->
+        <div class="artifacts" aria-hidden="true">
+          <div class="artifact artifact--stat" data-depth="0.6">
+            <div class="artifact__head"><span class="tag">TikTok · @dingovlr</span><span class="live"><i></i>archive</span></div>
+            <div class="stat-big"><span>30k+</span><small>abonnés</small></div>
+            <svg class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M0 55 C 20 54, 30 50, 45 48 S 70 44, 85 36 S 110 30, 125 22 S 150 18, 165 10 S 190 4, 200 3"/></svg>
+            <p class="artifact__delta">↑ <b>50M+</b> vues · <b>2,2M</b> j'aime</p>
+          </div>
+
+          <div class="artifact artifact--video" data-depth="1.1">
+            <div class="artifact__media">
+              <video data-autoplay muted loop playsinline preload="metadata" poster="assets/img/lindt-poster.jpg" src="assets/videos/lindt-preview.mp4"></video>
+              <span class="tc mono" data-live-tc>00:00:04:12</span>
+            </div>
+            <div class="artifact__foot"><span>Pub Lindt</span><span class="tag">Montage</span></div>
+          </div>
+
+          <div class="artifact artifact--render" data-depth="0.8">
+            <div class="artifact__head"><span class="file mono">orpellieres_motion_v12.aep</span></div>
+            <div class="render-bar"><span data-render-fill></span></div>
+            <div class="artifact__meta mono"><span>Rendu <b data-render-pct>0</b>%</span><span>1920×1080 · 25 i/s</span></div>
+            <div class="layers">
+              <span style="--w:72%;--x:4%"></span>
+              <span style="--w:46%;--x:22%"></span>
+              <span style="--w:58%;--x:38%"></span>
+            </div>
+          </div>
+
+          <div class="artifact artifact--brands" data-depth="1.3">
+            <span class="tag">Collaborations</span>
+            <div class="brand-stack">
+              <span><img src="assets/logos/wooting.svg" alt=""></span><span><img src="assets/logos/logitech.png" alt=""></span><span class="is-full"><img src="assets/logos/gearup.png" alt=""></span><span class="is-full"><img src="assets/logos/hone.png" alt=""></span><span class="more">+3</span>
+            </div>
+            <p><b>1 588 $</b> de ventes générées pour IQUNIX</p>
+          </div>
+
+          <div class="cursor-bubble" data-depth="1.6">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1l5.5 14 2-6 6-2z"/></svg>
+            <span>Matéo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUES ============ -->
+    <section class="brands" id="marques" aria-label="Marques partenaires">
+      <p class="brands__label mono">Elles m'ont fait confiance</p>
+      <div class="marquee" data-marquee></div>
+    </section>
+
+    <!-- ============ 01 · PREUVES ============ -->
+    <section class="numbers" id="chiffres" data-chapter="Preuves">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow mono">Scène 01 · Les preuves</p>
+          <h2 class="heading-lg" data-split>Avant le diplôme, <em>déjà des résultats.</em></h2>
+        </div>
+        <div class="numbers__grid" data-numbers></div>
+      </div>
+    </section>
+
+    <!-- ============ 02 · SHOWREEL ============ -->
+    <section class="showreel section--dark" id="showreel" data-chapter="Showreel">
+      <div class="showreel__pin">
+        <div class="glow glow--dark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="showreel__head container">
+          <p class="eyebrow mono">Scène 02 · Showreel</p>
+          <h2 class="heading-lg" data-split>Le meilleur, <em>en une minute.</em></h2>
+        </div>
+        <div class="showreel__frame" data-showreel data-cursor="Lecture">
+          <video muted loop playsinline preload="metadata" data-showreel-video></video>
+          <div class="showreel__ui">
+            <span class="mono showreel__badge" data-showreel-badge>Extrait · Pub Lindt</span>
+            <button class="play-btn" type="button" aria-label="Lire la vidéo avec le son">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </button>
+            <span class="mono showreel__tc" data-live-tc>00:00:00:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · MOTION ============ -->
+    <section class="work" id="motion" data-chapter="Motion">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow mono">Scène 03 · Motion design</p>
+          <h2 class="heading-lg" data-split>Donner du mouvement <em>à une idée.</em></h2>
+        </div>
+        <div class="work__grid" data-projects="motion"></div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · MONTAGE ============ -->
+    <section class="work work--fog" id="montage" data-chapter="Montage">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow mono">Scène 04 · Montage</p>
+          <h2 class="heading-lg" data-split>Le rythme, <em>c'est tout.</em></h2>
+        </div>
+        <div class="work__grid" data-projects="montage"></div>
+
+        <!-- Chaîne YouTube -->
+        <div class="yt" data-reveal>
+          <div class="yt__info">
+            <div class="yt__channel">
+              <span class="yt__avatar">d</span>
+              <div>
+                <p class="yt__name">dingofps <span class="tag">YouTube</span></p>
+                <p class="yt__subs mono"><b data-yt-subs>2,7 k</b> abonnés <span class="live"><i></i><span data-yt-live>chiffres</span></span></p>
+              </div>
+            </div>
+            <p class="yt__desc">Ma chaîne Valorant : tournage, montage et miniatures, je fais tout.</p>
+            <a href="https://www.youtube.com/@dingofps1" target="_blank" rel="noopener" class="link-arrow">Voir la chaîne →</a>
+          </div>
+          <div class="yt__videos" data-yt-videos></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · COMMUNICATION ============ -->
+    <section class="com" id="communication" data-chapter="Audience">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow mono">Scène 05 · Communication</p>
+          <h2 class="heading-lg" data-split>Construire une audience, <em>puis la faire vendre.</em></h2>
+        </div>
+
+        <!-- Carte d'accent (pêche) -->
+        <article class="case-card" data-reveal>
+          <div class="case-card__text">
+            <p class="tag tag--sienna">Étude de cas · TikTok</p>
+            <h3 class="case-card__title" data-tt-compte>@dingovlr</h3>
+            <p class="case-card__body" data-tt-texte></p>
+            <p class="case-card__note" data-tt-note></p>
+          </div>
+          <div class="case-card__stats">
+            <div><span class="case-num" data-tt-abonnes>30k+</span><span>abonnés</span></div>
+            <div><span class="case-num" data-tt-vues>50M+</span><span>vues</span></div>
+            <div><span class="case-num">7</span><span>marques</span></div>
+            <div><span class="case-num" data-tt-jaime>2,2M</span><span>j'aime</span></div>
+          </div>
+        </article>
+
+        <!-- Vidéos sponsorisées -->
+        <div class="phones-wrap">
+          <div class="phones-head">
+            <p class="eyebrow mono">Vidéos sponsorisées</p>
+            <p class="phones-hint mono">Glisser →</p>
+          </div>
+          <div class="phones" data-phones></div>
+        </div>
+
+        <!-- Collaborations -->
+        <div class="collabs">
+          <div class="collabs__head">
+            <h3 class="heading-sm">Les marques</h3>
+          </div>
+          <div class="collabs__grid" data-collabs></div>
+          <figure class="quote" data-quote data-reveal></figure>
+        </div>
+
+        <!-- Preuves -->
+        <div class="proofs-head">
+          <h3 class="heading-sm">Les captures</h3>
+        </div>
+        <div class="proofs" data-proofs></div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · À PROPOS ============ -->
+    <section class="about work--fog" id="a-propos" data-chapter="Moi">
+      <div class="container">
+        <p class="eyebrow mono">Scène 06 · Qui je suis</p>
+        <div class="about__grid">
+          <figure class="about__photo" data-reveal>
+            <img src="assets/img/mateo.jpg" alt="Portrait de Matéo Puertas" loading="lazy">
+            <figcaption class="mono"><span class="dot"></span>Béziers · BUT MMI, 2e année</figcaption>
+          </figure>
+          <div class="about__text">
+            <p class="about__lead" data-split-lines>J'ai appris le montage <em>bien avant MMI</em>, face à un public qui décroche en deux secondes. Depuis, je vais vite et je m'adapte à toutes les demandes.</p>
+            <div class="tools" data-reveal>
+              <span class="tool"><b class="tool__ic tool__ic--ae">Ae</b>After Effects</span>
+              <span class="tool"><b class="tool__ic tool__ic--pr">Pr</b>Premiere Pro</span>
+              <span class="tool"><b class="tool__ic tool__ic--ps">Ps</b>Photoshop</span>
+              <span class="tool"><b class="tool__ic">♪</b>TikTok & YouTube</span>
+            </div>
+            <aside class="looking" data-reveal>
+              <p class="tag">Ce que je cherche</p>
+              <h3 class="looking__title">Un stage de 3 mois, <em>d'avril à juin 2027.</em></h3>
+              <dl class="looking__list">
+                <div><dt>Domaines</dt><dd>Montage · Motion design · Communication</dd></div>
+                <div><dt>Lieu</dt><dd>Béziers, Narbonne, Montpellier ou télétravail</dd></div>
+                <div><dt>Ensuite</dt><dd>Alternance en 3<sup>e</sup> année</dd></div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · CONTACT ============ -->
+    <section class="contact section--dark" id="contact" data-chapter="Contact">
+      <div class="glow glow--dark glow--contact" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container contact__inner">
+        <p class="eyebrow mono contact__eyebrow">Scène 07 · Générique</p>
+        <h2 class="display contact__title" data-split>Un stage, un projet, <em>une idée ?</em></h2>
+        <button class="contact__mail" type="button" data-copy-mail data-cursor="Copier">
+          <span data-mail-text>puertasmateo.pro@gmail.com</span>
+          <span class="contact__copy mono" data-copy-label>Copier</span>
+        </button>
+        <div class="btn-row btn-row--center">
+          <a href="mailto:puertasmateo.pro@gmail.com" class="btn btn--light magnetic" data-mailto>Écrire un mail</a>
+          <a href="https://www.linkedin.com/in/mat%C3%A9o-puertas/" target="_blank" rel="noopener" class="btn btn--ghost-light magnetic">LinkedIn ↗</a>
+          <a href="https://www.youtube.com/@dingofps1" target="_blank" rel="noopener" class="btn btn--ghost-light magnetic">YouTube ↗</a>
+        </div>
+      </div>
+      <footer class="footer container">
+        <span>© 2026 Matéo Puertas</span>
+        <span class="mono">Béziers · <span data-clock>--:--</span></span>
+        <a href="mentions-legales.html" class="link-arrow">Mentions légales</a>
+        <a href="#top" class="link-arrow">Retour en haut ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <!-- ============ LECTEUR ============ -->
+  <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="Lecteur vidéo">
+    <button class="lightbox__close" type="button" aria-label="Fermer" data-lightbox-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lightbox__stage" data-lightbox-stage></div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

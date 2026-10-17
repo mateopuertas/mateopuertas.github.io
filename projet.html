@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projet — Matéo Puertas</title>
+  <meta name="description" content="Étude de cas — portfolio de Matéo Puertas, motion designer et monteur vidéo.">
+  <meta property="og:image" content="https://dingovlr.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/geist-normal-300-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    try { localStorage.removeItem('theme'); if (sessionStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body data-page="projet">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <header class="nav" data-nav>
+    <a href="index.html" class="nav__logo" aria-label="Matéo Puertas, accueil">
+      <span class="logo-mark" data-logo>mp<i>.</i></span>
+      <span class="nav__logo-text">Matéo Puertas</span>
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="index.html#motion">Motion</a>
+      <a href="index.html#montage">Montage</a>
+      <a href="index.html#communication">Communication</a>
+      <a href="index.html#a-propos">À propos</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-toggle" type="button" aria-label="Changer de thème" data-theme-toggle>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+      <a href="index.html#contact" class="btn btn--fill btn--sm magnetic nav__cta">Me contacter</a>
+      <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" data-menu aria-hidden="true">
+    <nav class="menu__links">
+      <a href="index.html#motion"><span class="mono">01</span>Motion</a>
+      <a href="index.html#montage"><span class="mono">02</span>Montage</a>
+      <a href="index.html#communication"><span class="mono">03</span>Communication</a>
+      <a href="index.html#a-propos"><span class="mono">04</span>À propos</a>
+      <a href="index.html#contact"><span class="mono">05</span>Contact</a>
+    </nav>
+    <p class="menu__foot mono"><span class="dot"></span> Disponible · stage avril → juin 2027</p>
+  </div>
+
+  <main data-project-root></main>
+
+  <footer class="footer container footer--light">
+    <span>© 2026 Matéo Puertas</span>
+    <a href="mailto:puertasmateo.pro@gmail.com" class="link-arrow">puertasmateo.pro@gmail.com</a>
+    <a href="mentions-legales.html" class="link-arrow">Mentions légales</a>
+    <a href="index.html" class="link-arrow">Accueil ↗</a>
+  </footer>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
