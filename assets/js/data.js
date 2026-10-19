@@ -24,11 +24,14 @@ window.PORTFOLIO = {
     youtubeApiKey: "",
     youtubeChaine: "@dingofps1",
 
-    // Ton logo : mets le chemin de ton fichier (SVG ou PNG transparent),
-    // ex. "assets/img/logo.svg". Laisse vide pour garder le monogramme « mp. ».
-    logo: "",
-    // Version claire du logo pour les fonds sombres (facultatif)
-    logoSombre: "",
+    // Ton logo (PNG transparent ou SVG). Laisse vide pour garder le monogramme « mp. ».
+    logo: "assets/img/logo-noir.png",
+    // Version claire du logo pour les fonds sombres
+    logoSombre: "assets/img/logo-blanc.png",
+    // Logo animé (MP4 noir sur fond blanc, recadré au plus près du logo).
+    // Le blanc devient transparent et le logo passe en blanc en mode nuit.
+    // S'il est rempli, il remplace le logo fixe. Laisse vide pour l'enlever.
+    logoAnimation: "assets/videos/logo-anim.mp4",
 
     // Compteur de visites GoatCounter (gratuit, sans cookie) : mets ici ton code,
     // par ex. "mateopuertas" si ton tableau de bord est mateopuertas.goatcounter.com

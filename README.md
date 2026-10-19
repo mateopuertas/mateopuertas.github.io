@@ -51,6 +51,7 @@ Tout se passe dans **`assets/js/data.js`**. Chaque projet ressemble à ceci :
 2. Place-le dans `assets/img/`, par exemple `assets/img/logo.svg`.
 3. Dans `data.js`, remplis `logo: "assets/img/logo.svg"`.
 4. Si ton logo est foncé, ajoute une version claire pour le mode nuit et les sections noires : `logoSombre: "assets/img/logo-blanc.svg"`.
+5. Logo animé : `logoAnimation` pointe vers un MP4 **noir sur fond blanc**, recadré au plus près du logo. Le site rend le blanc transparent et passe le logo en blanc en mode nuit. Pour en refaire un depuis After Effects, exporte en H.264 sur fond blanc.
 5. Pour l'icône de l'onglet, remplace `assets/img/favicon.svg`.
 
 ## Préparer les vidéos pour le web

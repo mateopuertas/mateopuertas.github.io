@@ -15,7 +15,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/geist-normal-300-900-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-serif-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -59,25 +60,15 @@
 
   <div class="menu" data-menu aria-hidden="true">
     <nav class="menu__links">
-      <a href="#motion"><span class="mono">03</span>Motion</a>
-      <a href="#montage"><span class="mono">04</span>Montage</a>
-      <a href="#communication"><span class="mono">05</span>Communication</a>
-      <a href="#a-propos"><span class="mono">06</span>À propos</a>
-      <a href="#contact"><span class="mono">07</span>Contact</a>
+      <a href="#motion">Motion</a>
+      <a href="#montage">Montage</a>
+      <a href="#communication">Communication</a>
+      <a href="#a-propos">À propos</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <p class="menu__foot mono"><span class="dot"></span> Disponible · stage avril → juin 2027</p>
+    <p class="menu__foot">Je cherche un stage de 3 mois, d'avril à juin 2027.</p>
   </div>
 
-  <!-- ============ TIMELINE DE SCROLL ============ -->
-  <div class="timeline" aria-hidden="true" data-timeline>
-    <span class="timeline__tc mono" data-timecode>00:00:00:00</span>
-    <div class="timeline__track">
-      <div class="timeline__fill"></div>
-      <div class="timeline__markers" data-markers></div>
-      <div class="timeline__head"></div>
-    </div>
-    <span class="timeline__rec mono"><i></i>REC</span>
-  </div>
 
   <main id="top" data-lenis-content>
 
@@ -99,7 +90,7 @@
       <div class="hero__layer hero__ui" data-hero-ui>
         <div class="glow glow--hero" aria-hidden="true"><span></span><span></span></div>
         <div class="hero__inner">
-          <p class="pill-status" data-hero-fade><span class="dot"></span>Disponible · stage d'avril à juin 2027</p>
+          <p class="hero__avail" data-hero-fade><span>Stage recherché</span>3 mois, d'avril à juin 2027</p>
           <p class="hero__kicker" data-hero-fade>Des vidéos qu'on regarde</p>
           <div class="hero__big ghost" aria-hidden="true"><span class="hero__line">Jusqu'au</span><span class="hero__line">bout.</span></div>
           <div class="hero__foot" data-hero-fade>
@@ -113,35 +104,17 @@
             </div>
           </div>
         </div>
-        <span class="hero__tc mono" aria-hidden="true"><i></i><span data-live-tc>00:00:00:00</span></span>
 
         <!-- Cartes flottantes -->
         <div class="artifacts" aria-hidden="true">
-          <div class="artifact artifact--stat" data-depth="0.6">
-            <div class="artifact__head"><span class="tag">TikTok · @dingovlr</span><span class="live"><i></i>archive</span></div>
-            <div class="stat-big"><span>30k+</span><small>abonnés</small></div>
-            <svg class="spark" viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M0 55 C 20 54, 30 50, 45 48 S 70 44, 85 36 S 110 30, 125 22 S 150 18, 165 10 S 190 4, 200 3"/></svg>
-            <p class="artifact__delta">↑ <b>50M+</b> vues · <b>2,2M</b> j'aime</p>
-          </div>
 
           <div class="artifact artifact--video" data-depth="1.1">
             <div class="artifact__media">
               <video data-autoplay muted loop playsinline preload="metadata" poster="assets/img/lindt-poster.jpg" src="assets/videos/lindt-preview.mp4"></video>
-              <span class="tc mono" data-live-tc>00:00:04:12</span>
             </div>
             <div class="artifact__foot"><span>Pub Lindt</span><span class="tag">Montage</span></div>
           </div>
 
-          <div class="artifact artifact--render" data-depth="0.8">
-            <div class="artifact__head"><span class="file mono">orpellieres_motion_v12.aep</span></div>
-            <div class="render-bar"><span data-render-fill></span></div>
-            <div class="artifact__meta mono"><span>Rendu <b data-render-pct>0</b>%</span><span>1920×1080 · 25 i/s</span></div>
-            <div class="layers">
-              <span style="--w:72%;--x:4%"></span>
-              <span style="--w:46%;--x:22%"></span>
-              <span style="--w:58%;--x:38%"></span>
-            </div>
-          </div>
 
           <div class="artifact artifact--brands" data-depth="1.3">
             <span class="tag">Collaborations</span>
@@ -151,10 +124,6 @@
             <p><b>1 588 $</b> de ventes générées pour IQUNIX</p>
           </div>
 
-          <div class="cursor-bubble" data-depth="1.6">
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1l5.5 14 2-6 6-2z"/></svg>
-            <span>Matéo</span>
-          </div>
         </div>
       </div>
     </section>
@@ -169,7 +138,6 @@
     <section class="numbers" id="chiffres" data-chapter="Preuves">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow mono">Scène 01 · Les preuves</p>
           <h2 class="heading-lg" data-split>Avant le diplôme, <em>déjà des résultats.</em></h2>
         </div>
         <div class="numbers__grid" data-numbers></div>
@@ -181,7 +149,6 @@
       <div class="showreel__pin">
         <div class="glow glow--dark" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="showreel__head container">
-          <p class="eyebrow mono">Scène 02 · Showreel</p>
           <h2 class="heading-lg" data-split>Le meilleur, <em>en une minute.</em></h2>
         </div>
         <div class="showreel__frame" data-showreel data-cursor="Lecture">
@@ -201,7 +168,6 @@
     <section class="work" id="motion" data-chapter="Motion">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow mono">Scène 03 · Motion design</p>
           <h2 class="heading-lg" data-split>Donner du mouvement <em>à une idée.</em></h2>
         </div>
         <div class="work__grid" data-projects="motion"></div>
@@ -212,7 +178,6 @@
     <section class="work work--fog" id="montage" data-chapter="Montage">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow mono">Scène 04 · Montage</p>
           <h2 class="heading-lg" data-split>Le rythme, <em>c'est tout.</em></h2>
         </div>
         <div class="work__grid" data-projects="montage"></div>
@@ -221,10 +186,10 @@
         <div class="yt" data-reveal>
           <div class="yt__info">
             <div class="yt__channel">
-              <span class="yt__avatar">d</span>
+              <img class="yt__avatar" src="assets/img/yt/dingofps.jpg" alt="Logo de la chaîne dingofps" width="56" height="56" loading="lazy">
               <div>
                 <p class="yt__name">dingofps <span class="tag">YouTube</span></p>
-                <p class="yt__subs mono"><b data-yt-subs>2,7 k</b> abonnés <span class="live"><i></i><span data-yt-live>chiffres</span></span></p>
+                <p class="yt__subs mono"><b data-yt-subs>2,7 k</b> abonnés</p>
               </div>
             </div>
             <p class="yt__desc">Ma chaîne Valorant : tournage, montage et miniatures, je fais tout.</p>
@@ -239,7 +204,6 @@
     <section class="com" id="communication" data-chapter="Audience">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow mono">Scène 05 · Communication</p>
           <h2 class="heading-lg" data-split>Construire une audience, <em>puis la faire vendre.</em></h2>
         </div>
 
@@ -262,7 +226,7 @@
         <!-- Vidéos sponsorisées -->
         <div class="phones-wrap">
           <div class="phones-head">
-            <p class="eyebrow mono">Vidéos sponsorisées</p>
+            <h3 class="heading-sm">Les vidéos sponsorisées</h3>
             <p class="phones-hint mono">Glisser →</p>
           </div>
           <div class="phones" data-phones></div>
@@ -288,11 +252,10 @@
     <!-- ============ 06 · À PROPOS ============ -->
     <section class="about work--fog" id="a-propos" data-chapter="Moi">
       <div class="container">
-        <p class="eyebrow mono">Scène 06 · Qui je suis</p>
         <div class="about__grid">
           <figure class="about__photo" data-reveal>
             <img src="assets/img/mateo.jpg" alt="Portrait de Matéo Puertas" loading="lazy">
-            <figcaption class="mono"><span class="dot"></span>Béziers · BUT MMI, 2e année</figcaption>
+            <figcaption class="mono">Béziers · BUT MMI, 2e année</figcaption>
           </figure>
           <div class="about__text">
             <p class="about__lead" data-split-lines>J'ai appris le montage <em>bien avant MMI</em>, face à un public qui décroche en deux secondes. Depuis, je vais vite et je m'adapte à toutes les demandes.</p>
@@ -324,7 +287,7 @@
     <section class="contact section--dark" id="contact" data-chapter="Contact">
       <div class="glow glow--dark glow--contact" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="container contact__inner">
-        <p class="eyebrow mono contact__eyebrow">Scène 07 · Générique</p>
+        <div class="contact__sign" data-logo-anim aria-hidden="true"></div>
         <h2 class="display contact__title" data-split>Un stage, un projet, <em>une idée ?</em></h2>
         <button class="contact__mail" type="button" data-copy-mail data-cursor="Copier">
           <span data-mail-text>puertasmateo.pro@gmail.com</span>

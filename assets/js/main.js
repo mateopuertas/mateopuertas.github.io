@@ -216,7 +216,7 @@
     if (i < 0) { location.replace('index.html#motion'); return; }
     const p = list[i];
     const next = list[(i + 1) % list.length];
-    const catLabel = p.categorie === 'motion' ? '01 — Motion design' : '02 — Montage vidéo';
+    const catLabel = p.categorie === 'motion' ? 'Motion design' : 'Montage vidéo';
     document.title = `${p.titre} — Matéo Puertas`;
 
     const words = p.titre.split(' ');
@@ -271,13 +271,68 @@
   }
 
   function initLogo() {
-    const src = D.site && D.site.logo;
-    if (!src) return;
-    const alt = D.site.logoSombre;
+    const S = D.site || {};
+    const anim = S.logoAnimation, src = S.logo, alt = S.logoSombre;
+    if (!src && !anim) return;
     $$('[data-logo]').forEach(el => {
       el.classList.add('has-img');
-      if (alt) el.classList.add('has-alt');
-      el.innerHTML = `<img class="logo-main" src="${esc(src)}" alt="">${alt ? `<img class="logo-alt" src="${esc(alt)}" alt="">` : ''}`;
+      if (anim) {
+        el.classList.add('is-anim');
+        el.innerHTML = '<canvas aria-hidden="true"></canvas>';
+      } else {
+        if (alt) el.classList.add('has-alt');
+        el.innerHTML = `<img class="logo-main" src="${esc(src)}" alt="">${alt ? `<img class="logo-alt" src="${esc(alt)}" alt="">` : ''}`;
+      }
+    });
+    if (!anim) return;
+    $$('[data-logo-anim]').forEach(el => { el.innerHTML = '<canvas aria-hidden="true"></canvas>'; });
+
+    // Logo animé : la vidéo (noir sur blanc) est redessinée image par image
+    // dans un canvas transparent ; le blanc devient transparent.
+    // La couleur (noir ou blanc selon le thème) est gérée en CSS.
+    const players = $$('[data-logo] canvas, [data-logo-anim] canvas').map(cv => {
+      const v = document.createElement('video');
+      Object.assign(v, { src: anim, muted: true, playsInline: true, preload: 'auto' });
+      v.setAttribute('playsinline', '');
+      v.className = 'logo-src';
+      cv.parentNode.appendChild(v);
+      const ctx = cv.getContext('2d', { willReadFrequently: true });
+      let raf = 0, last = null;
+      const draw = () => {
+        const w = Math.round(cv.clientWidth * Math.min(2, devicePixelRatio || 1));
+        const h = Math.round(cv.clientHeight * Math.min(2, devicePixelRatio || 1));
+        if (!w || !h || v.readyState < 2) return;
+        if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; last = null; }
+        ctx.drawImage(v, 0, 0, w, h);
+        const img = ctx.getImageData(0, 0, w, h), d = img.data;
+        // Image pas encore décodée (noire) : on garde la précédente
+        if (d[0] < 200) { if (last) ctx.putImageData(last, 0, 0); else ctx.clearRect(0, 0, w, h); return; }
+        for (let k = 0; k < d.length; k += 4) { d[k + 3] = 255 - d[k]; d[k] = d[k + 1] = d[k + 2] = 0; }
+        ctx.putImageData(img, 0, 0);
+        last = img;
+      };
+      const loop = () => { draw(); if (!v.paused && !v.ended) raf = requestAnimationFrame(loop); };
+      v.addEventListener('play', () => { cancelAnimationFrame(raf); loop(); });
+      v.addEventListener('ended', draw);
+      v.addEventListener('seeked', draw);
+      const play = () => { try { v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } catch (e) {} };
+      const freeze = () => { const end = () => { v.currentTime = Math.max(0, v.duration - 0.05); }; v.readyState >= 1 ? end() : v.addEventListener('loadedmetadata', end, { once: true }); };
+      return { cv, play, freeze };
+    });
+
+    players.forEach(p => {
+      const navLogo = p.cv.closest('[data-logo]');
+      if (reduced) return p.freeze();
+      if (navLogo) {
+        // Attend la fin du fondu d'apparition du menu
+        setTimeout(p.play, hasGsap ? 900 : 0);
+        (navLogo.closest('a') || navLogo).addEventListener('mouseenter', p.play);
+      } else {
+        // Grand logo en fin de page : se trace quand il arrive à l'écran
+        p.freeze();
+        const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { p.play(); io.disconnect(); } }, { threshold: 0.6 });
+        io.observe(p.cv);
+      }
     });
   }
 
@@ -386,7 +441,7 @@
         .from('.hero__mask .hero__line', { yPercent: 40, opacity: 0, duration: 1.4, stagger: .12 })
         .to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1.1, stagger: .1 }, '-=1.1')
         .from('.nav', { opacity: 0, duration: 1 }, '-=1');
-      if (innerWidth > 1000) gsap.from('.hero__ui .artifact, .hero__ui .cursor-bubble', { opacity: 0, y: 70, rotate: i => [-6, 5, 4, -5, 0][i % 5], scale: .9, duration: 1.5, stagger: .09, ease: 'expo.out', delay: .5 });
+      if (innerWidth > 1000) gsap.from('.hero__ui .artifact', { opacity: 0, y: 70, rotate: i => [-6, 5, 4, -5, 0][i % 5], scale: .9, duration: 1.5, stagger: .09, ease: 'expo.out', delay: .5 });
       return;
     }
     const title = $('.project-hero__title');
@@ -396,7 +451,7 @@
       .to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1.2, stagger: .1 }, '-=1.05')
       .from('.nav', { opacity: 0, duration: 1 }, '-=1.2');
 
-    const arts = $$('.artifact, .cursor-bubble');
+    const arts = $$('.artifact');
     if (arts.length && innerWidth > 1000) {
       tl.from(arts, { opacity: 0, y: 80, rotate: (i) => [-6, 5, 4, -5, 0][i % 5], scale: .9, duration: 1.6, stagger: .09 }, '-=1.3');
     }
@@ -506,19 +561,8 @@
     if (!arts.length || !hasGsap || reduced) return;
 
     arts.forEach((a, i) => {
-      if (a.classList.contains('cursor-bubble')) return;
       gsap.to(a, { y: i % 2 ? 12 : -12, rotation: i % 2 ? .6 : -.6, duration: 3 + i * .4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 });
     });
-
-    // Curseur « Matéo » qui se balade entre les cartes
-    const bubble = $('.cursor-bubble');
-    if (bubble) {
-      gsap.timeline({ repeat: -1, delay: 3, defaults: { duration: 2.4, ease: 'power2.inOut' } })
-        .to(bubble, { x: 40, y: -260 })
-        .to(bubble, { x: -30, y: -130 }, '+=.8')
-        .to(bubble, { x: 20, y: 60 }, '+=.8')
-        .to(bubble, { x: 0, y: 0 }, '+=.8');
-    }
 
     if (innerWidth <= 1000) return;
     let mx = 0, my = 0, cx = 0, cy = 0;
@@ -542,19 +586,6 @@
   function initGlows() {
     const io = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.toggle('is-paused', !e.isIntersecting)));
     $$('.glow').forEach(g => io.observe(g));
-  }
-
-  /* Barre de rendu After Effects factice */
-  function initRenderBar() {
-    const fill = $('[data-render-fill]');
-    const pct = $('[data-render-pct]');
-    if (!fill) return;
-    if (!hasGsap || reduced) { fill.style.width = '87%'; pct.textContent = '87'; return; }
-    const o = { v: 0 };
-    gsap.timeline({ repeat: -1, delay: 2, repeatDelay: 1.2 })
-      .to(o, { v: 100, duration: 5, ease: 'power1.inOut', onUpdate: () => { fill.style.width = o.v + '%'; pct.textContent = Math.round(o.v); } })
-      .to(fill, { opacity: 0, duration: .4 }, '+=.6')
-      .set(o, { v: 0 }).set(fill, { width: 0, opacity: 1 });
   }
 
   /* ------------------------------------------------------------------ */
@@ -603,50 +634,6 @@
     };
     measure(); measureLinks(); update(scrollY);
     onFrame(update);
-  }
-
-  /* Timeline façon logiciel de montage */
-  function initTimeline() {
-    const tl = $('[data-timeline]');
-    if (!tl) return;
-    const tc = $('[data-timecode]');
-    const fill = $('.timeline__fill', tl);
-    const head = $('.timeline__head', tl);
-    const box = $('[data-markers]', tl);
-    const chapters = $$('[data-chapter]');
-    const TOTAL = 150; // durée fictive du « film » (secondes)
-    let markers = [];
-    const layout = () => {
-      const max = layoutCache.max || (document.documentElement.scrollHeight - innerHeight);
-      box.innerHTML = '';
-      markers = chapters.map(c => {
-        const pos = Math.min(1, Math.max(0, (c.getBoundingClientRect().top + scrollY) / max));
-        const m = document.createElement('button');
-        m.type = 'button';
-        m.className = 'timeline__marker';
-        m.style.left = pos * 100 + '%';
-        m.innerHTML = `<span>${esc(c.dataset.chapter)}</span>`;
-        m.setAttribute('aria-label', c.dataset.chapter);
-        m.addEventListener('click', () => lenis ? lenis.scrollTo(c, { duration: 1.6 }) : c.scrollIntoView({ behavior: 'smooth' }));
-        box.appendChild(m);
-        return { el: m, pos };
-      });
-    };
-    const trackW = () => $('.timeline__track', tl).offsetWidth;
-    let w = trackW(), visible = null;
-    const update = (y = scrollY) => {
-      const max = layoutCache.max;
-      const p = max > 0 ? Math.min(1, y / max) : 0;
-      fill.style.transform = `scaleX(${p})`;
-      head.style.transform = `translate3d(${p * w}px, 0, 0)`;
-      tc.textContent = timecode(p * TOTAL);
-      markers.forEach(m => { const on = p >= m.pos - .001; if (m.on !== on) { m.on = on; m.el.classList.toggle('is-passed', on); } });
-      const v = y > innerHeight * .6;
-      if (v !== visible) { visible = v; tl.classList.toggle('is-visible', v); }
-    };
-    measure(); layout(); update();
-    onFrame(update);
-    refreshers.push(() => { w = trackW(); layout(); update(); });
     if (hasGsap) ScrollTrigger.addEventListener('refresh', refreshLayout);
   }
 
@@ -947,7 +934,6 @@
   initScroll();
   initMenu();
   initNav();
-  initTimeline();
   initCursor();
   initVideos();
   initDragScroll();
@@ -955,7 +941,6 @@
   initContact();
   initCounters();
   initSteps();
-  initRenderBar();
   initGlows();
   initYoutube();
   initStats();
