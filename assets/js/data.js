@@ -39,14 +39,14 @@ window.PORTFOLIO = {
   },
 
   /* ---------------------------------------------------------------- */
-  // Showreel : quand ton showreel sera prêt, mets son chemin dans "video".
-  // Tant qu'il est vide, l'extrait de la pub Lindt est utilisé.
+  // Showreel : "video" est la version complète (ouverte au clic),
+  // "apercu" la version légère qui tourne en boucle dans la section.
+  // Pour mettre ton propre showreel, remplace ces deux fichiers.
   showreel: {
-    video: "",
-    poster: "",
-    extrait: "assets/videos/lindt-preview.mp4",
-    extraitComplet: "assets/videos/lindt.mp4",
-    extraitPoster: "assets/img/lindt-poster.jpg",
+    video: "assets/videos/showreel.mp4",
+    apercu: "assets/videos/showreel-preview.mp4",
+    poster: "assets/img/showreel-poster.jpg",
+    badge: "Showreel 2026 · 45 s",
   },
 
   /* ---------------------------------------------------------------- */
@@ -60,6 +60,35 @@ window.PORTFOLIO = {
   /* ---------------------------------------------------------------- */
   // categorie : "motion" | "montage"
   projets: [
+    {
+      slug: "alternance-iut",
+      categorie: "motion",
+      titre: "Pub alternance — IUT de Béziers",
+      accroche: "33 secondes de motion design façon interface d'appli, pour donner envie à une entreprise de recruter un alternant MMI.",
+      annee: "2026",
+      duree: "33 s",
+      format: "16:9 · 1080p 60 i/s",
+      role: "Script, design, animation et montage son",
+      equipe: "Seul · projet de cours",
+      outils: ["After Effects", "Premiere Pro", "ElevenLabs"],
+      statut: "",
+      video: "assets/videos/alternance-iut.mp4",
+      apercu: "assets/videos/alternance-iut-preview.mp4",
+      poster: "assets/img/alternance-iut-poster.jpg",
+      sections: [
+        { titre: "Le contexte", texte: "Un projet de cours en BUT MMI : une publicité en motion design pour l'alternance à l'IUT de Béziers, avec le CFA EnSup-LR." },
+        { titre: "Le message", texte: "Montrer à un chef d'entreprise, en une demi-minute, ce que coûte vraiment un alternant : la formation prise en charge, la participation qui reste, et l'aide de l'État." },
+        { titre: "Mes choix", texte: "J'adore les vidéos de présentation de logiciels, façon Apple : des interfaces propres qui s'animent, des chiffres qui défilent, un curseur qui clique. J'ai repris l'orange, le bleu et le rose du logo du BUT MMI pour rester dans l'identité de la formation." },
+        { titre: "Le son", texte: "Voix off générée avec ElevenLabs et musique libre de droits, calées sur l'animation dans Premiere Pro." },
+        { titre: "Le résultat", texte: "Environ 10 heures de travail, du script à l'export. La vidéo vient d'être rendue : la note sera ajoutée ici dès que je l'aurai." },
+      ],
+      galerie: [
+        { src: "assets/img/galerie/alternance-iut-1.jpg", legende: "Le calculateur : le coût de la formation tombe à 0 €" },
+        { src: "assets/img/galerie/alternance-iut-2.jpg", legende: "Le récapitulatif, en gros plan" },
+        { src: "assets/img/galerie/alternance-iut-3.jpg", legende: "L'aide de l'État selon la taille de l'entreprise" },
+        { src: "assets/img/galerie/alternance-iut-4.jpg", legende: "Le final, sur un MacBook" },
+      ],
+    },
     {
       slug: "orphelieres",
       categorie: "motion",
@@ -81,31 +110,12 @@ window.PORTFOLIO = {
         { titre: "Mes choix", texte: "J'ai construit la vidéo en deux temps : d'abord des plans du site pour installer l'ambiance, puis 22 secondes de motion design où l'application s'anime dans un téléphone, avec des messages courts et lisibles à distance." },
         { titre: "Le résultat", texte: "Une vidéo de 1 min 15 pensée pour l'écran : lisible sans le son, rythmée, et cohérente du premier plan jusqu'à l'animation finale." },
       ],
-      galerie: [],
-    },
-    {
-      slug: "alternance-iut",
-      categorie: "motion",
-      titre: "Pub alternance — IUT de Béziers",
-      accroche: "35 secondes de motion pour donner envie de recruter un alternant MMI.",
-      annee: "2026",
-      duree: "≈ 35 s",
-      format: "16:9 · publicité",
-      role: "Projet solo : écriture, design et animation",
-      equipe: "Solo",
-      outils: ["After Effects", "Premiere Pro"],
-      statut: "En cours de production",
-      progression: 65,    // pourcentage affiché sur la carte
-      video: "",
-      apercu: "",
-      poster: "",
-      sections: [
-        { titre: "Le contexte", texte: "L'IUT de Béziers souhaite convaincre les entreprises de la région d'accueillir des alternants du BUT MMI." },
-        { titre: "La demande", texte: "Une publicité courte, en motion design, qui explique en une trentaine de secondes pourquoi et comment recruter un étudiant MMI." },
-        { titre: "Mes choix", texte: "Un message direct, des animations rythmées et une hiérarchie d'information pensée pour un public de chefs d'entreprise pressés." },
-        { titre: "Le résultat", texte: "Projet en cours de finalisation — la vidéo sera ajoutée ici dès qu'elle sera terminée." },
+      galerie: [
+        { src: "assets/img/galerie/orphelieres-1.jpg", legende: "Ouverture en drone sur le site" },
+        { src: "assets/img/galerie/orphelieres-2.jpg", legende: "Une soirée concert sur place" },
+        { src: "assets/img/galerie/orphelieres-3.jpg", legende: "L'accès, animé sur la carte" },
+        { src: "assets/img/galerie/orphelieres-4.jpg", legende: "Le QR code qui mène à l'application" },
       ],
-      galerie: [],
     },
     {
       slug: "lindt",
@@ -128,7 +138,12 @@ window.PORTFOLIO = {
         { titre: "Mes choix", texte: "Tout repose sur le montage : des plans serrés et chaleureux (mains, cuisine, gestes transmis), une musique qui porte le récit et un rythme lent qui laisse respirer la nostalgie et le côté familial du chocolat." },
         { titre: "Le résultat", texte: "Une publicité de 55 secondes, sans dialogue, où l'image et le son racontent seuls l'histoire." },
       ],
-      galerie: [],
+      galerie: [
+        { src: "assets/img/galerie/lindt-1.jpg", legende: "Le grand-père en cuisine" },
+        { src: "assets/img/galerie/lindt-2.jpg", legende: "Gros plan sur les mains" },
+        { src: "assets/img/galerie/lindt-3.jpg", legende: "La transmission avec sa petite-fille" },
+        { src: "assets/img/galerie/lindt-4.jpg", legende: "Le packshot final" },
+      ],
     },
     {
       slug: "yoga-du-rire",
@@ -152,7 +167,12 @@ window.PORTFOLIO = {
         { titre: "Mes choix", texte: "Une alternance entre interviews et extraits de séances : la parole explique, les images prouvent. Le rythme suit l'énergie des séances pour transmettre la bonne humeur à l'écran." },
         { titre: "Le résultat", texte: "Un format de 3 min 19 en horizontal, clair et chaleureux, qui donne envie d'essayer." },
       ],
-      galerie: [],
+      galerie: [
+        { src: "assets/img/galerie/yoga-du-rire-1.jpg", legende: "Une séance en cercle" },
+        { src: "assets/img/galerie/yoga-du-rire-2.jpg", legende: "L'interview de l'animatrice" },
+        { src: "assets/img/galerie/yoga-du-rire-3.jpg", legende: "Une séance avec un public assis" },
+        { src: "assets/img/galerie/yoga-du-rire-4.jpg", legende: "Le final, sous-titré" },
+      ],
     },
   ],
 

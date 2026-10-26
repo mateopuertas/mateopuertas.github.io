@@ -41,7 +41,8 @@ Tout se passe dans **`assets/js/data.js`**. Chaque projet ressemble à ceci :
 - Une vidéo laissée vide (`""`) affiche un écran « Bientôt en ligne ».
 - Pour **ajouter un projet**, copie un bloc `{ … }`, colle-le à la suite et change le `slug`.
 - Pour **terminer la pub alternance**, ajoute sa vidéo puis vide `statut` (`""`) et supprime `progression`.
-- Pour **le showreel**, remplis `showreel.video`. Tant qu'il est vide, l'extrait Lindt s'affiche.
+- **Showreel** : un showreel provisoire (45 s, sans son) est en place. Pour mettre le tien, remplace `assets/videos/showreel.mp4` (version complète, ouverte au clic) et `assets/videos/showreel-preview.mp4` (version légère en boucle, sans son), puis ajuste `showreel.badge` dans `data.js`.
+- **Images clés d'un projet** : la liste `galerie` de chaque projet (`src` + `legende`). Les images sont dans `assets/img/galerie/`, en 16:9.
 - **Logos des marques** : dépose les SVG dans `assets/logos/` et remplis `logo: "assets/logos/wooting.svg"`.
 - **Captures** (stats TikTok, message de Wooting, ventes IQUNIX) : dépose-les dans `assets/img/` et remplis le tableau `preuves`.
 

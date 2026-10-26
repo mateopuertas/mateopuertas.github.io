@@ -88,8 +88,8 @@
         const badge = p.statut ? `<span class="pcard__badge"><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="#ddd"/><circle cx="10" cy="10" r="8" stroke="#ff8a6b" stroke-dasharray="${(p.progression || 50) / 100 * 50.3} 50.3" transform="rotate(-90 10 10)"/></svg>${esc(p.statut)}</span>` : '';
         const progress = p.progression ? `<div class="pcard__progress"><span style="--p:${p.progression}%"></span></div>` : '';
         return `
-          <a class="pcard pcard--${size}" href="projet.html?p=${encodeURIComponent(p.slug)}" data-reveal data-cursor="${p.statut ? 'Aperçu' : 'Voir'}">
-            <div class="pcard__media">${mediaFor(p)}${badge}${progress}</div>
+          <a class="pcard pcard--${size}" href="projet.html?p=${encodeURIComponent(p.slug)}" data-reveal>
+            <div class="pcard__media" style="view-transition-name: media-${esc(p.slug)}">${mediaFor(p)}${badge}${progress}</div>
             <div class="pcard__info">
               <div>
                 <h3 class="pcard__title">${esc(p.titre)}</h3>
@@ -124,7 +124,7 @@
           ? `<video muted loop playsinline preload="none" ${v.poster ? `poster="${esc(v.poster)}"` : ''} data-src="${esc(v.apercu || v.src)}" data-hover-play></video>`
           : placeholder(`Vidéo <em>#${i + 1}</em>`, { label: 'Archive TikTok', meta: '9:16', glow: ['#ff7a4d', '#9a7bff', '#ffb38a', '#ff5e8a', '#6c8dff'][i % 5] });
         return `
-          <div class="phone${v.format === '16:9' ? ' phone--land' : ''}" ${v.src ? `data-cursor="Lecture" data-vertical="${esc(v.src)}" data-land="${v.format === '16:9' ? 1 : ''}"` : ''}>
+          <div class="phone${v.format === '16:9' ? ' phone--land' : ''}" ${v.src ? `data-vertical="${esc(v.src)}" data-land="${v.format === '16:9' ? 1 : ''}"` : ''}>
             <div class="phone__screen">
               ${media}
               <div class="phone__ui"><span><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.3 4.5 7 4.5c2 0 3.5 1.1 5 3 1.5-1.9 3-3 5-3 3.7 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M14 4l7 7-7 7v-4c-5 0-8 1.5-11 5 1-5 4-10 11-11z"/></svg></span></div>
@@ -161,7 +161,7 @@
     const pg = $('[data-proofs]');
     if (pg && D.preuves) {
       const fig = p => p.src
-        ? `<figure class="proof proof--${p.format === 'paysage' ? 'land' : 'port'}" data-reveal data-zoom="${esc(p.src)}" data-cursor="Agrandir"><img src="${esc(p.src)}" alt="${esc(p.legende)}" loading="lazy"><figcaption>${esc(p.legende)}</figcaption></figure>`
+        ? `<figure class="proof proof--${p.format === 'paysage' ? 'land' : 'port'}" data-reveal data-zoom="${esc(p.src)}"><img src="${esc(p.src)}" alt="${esc(p.legende)}" loading="lazy"><figcaption>${esc(p.legende)}</figcaption></figure>`
         : `<figure class="proof proof--empty" data-reveal><div>${esc(p.legende)}<span>Capture à ajouter</span></div></figure>`;
       const port = D.preuves.filter(p => p.format !== 'paysage');
       const land = D.preuves.filter(p => p.format === 'paysage');
@@ -172,15 +172,15 @@
     const sv = $('[data-showreel-video]');
     if (sv && D.showreel) {
       const s = D.showreel;
-      sv.src = s.video || s.extrait;
-      sv.poster = s.poster || s.extraitPoster || '';
-      $('[data-showreel-badge]').textContent = s.video ? 'Showreel 2026' : 'Extrait · Pub Lindt';
+      sv.src = s.apercu || s.video;
+      sv.poster = s.poster || '';
+      $('[data-showreel-badge]').textContent = s.badge || 'Showreel';
     }
   }
 
   function ytCard(v, rank) {
     return `
-      <button class="ytv" type="button" data-yt-id="${esc(v.id)}" data-cursor="Lecture">
+      <button class="ytv" type="button" data-yt-id="${esc(v.id)}">
         <span class="ytv__thumb">
           <img src="assets/img/yt/${esc(v.id)}.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg'" alt="" loading="lazy">
           ${rank ? `<span class="ytv__rank mono">#${rank}</span>` : ''}
@@ -226,13 +226,12 @@
       ? `<video controls playsinline preload="metadata" crossorigin="anonymous" ${p.poster ? `poster="${esc(p.poster)}"` : ''} src="${esc(p.video)}" data-track="video/${esc(p.slug)}">${p.sousTitres ? `<track kind="subtitles" srclang="fr" label="Français" src="${esc(p.sousTitres)}" default>` : ''}</video>`
       : placeholder(titleHtml, { label: p.statut || 'Bientôt en ligne', meta: p.duree });
 
-    const gallery = (p.galerie || []).length ? `
+    const shots = (p.galerie || []).filter(g => g.src);
+    const gallery = shots.length ? `
       <div class="gallery container">
-        <p class="eyebrow mono">Processus</p>
+        <h2 class="heading-sm gallery__title" data-reveal>Images clés</h2>
         <div class="gallery__grid">
-          ${p.galerie.map(g => g.src
-            ? `<figure class="gallery__item" data-reveal><img src="${esc(g.src)}" alt="${esc(g.legende)}" loading="lazy"><figcaption>${esc(g.legende)}</figcaption></figure>`
-            : `<figure class="proof proof--empty gallery__item" data-reveal><div>${esc(g.legende)}<span>Image à ajouter</span></div></figure>`).join('')}
+          ${shots.map(g => `<figure class="gallery__item" data-reveal data-zoom="${esc(g.src)}"><img src="${esc(g.src)}" alt="${esc(g.legende)}" loading="lazy"><figcaption>${esc(g.legende)}</figcaption></figure>`).join('')}
         </div>
       </div>` : '';
 
@@ -244,28 +243,30 @@
           <p class="eyebrow mono" style="position:relative">${catLabel}</p>
           <h1 class="display project-hero__title" data-split>${titleHtml}</h1>
           <p class="project-hero__lead" data-hero-fade>${esc(p.accroche)}</p>
-          <dl class="project-meta" data-hero-fade>
+        </div>
+      </section>
+      <section class="project-video">
+        <div class="project-video__frame" style="view-transition-name: media-${esc(p.slug)}">${video}</div>
+      </section>
+      <section class="project-body">
+        <div class="container">
+          <dl class="project-meta" data-reveal>
             <div><dt>Rôle</dt><dd>${esc(p.role)}</dd></div>
             <div><dt>Durée · format</dt><dd>${esc(p.duree)} · ${esc(p.format)}</dd></div>
             <div><dt>Outils</dt><dd>${esc((p.outils || []).join(', '))}</dd></div>
             <div><dt>Année · cadre</dt><dd>${esc(p.annee)} · ${esc(p.equipe)}</dd></div>
           </dl>
-        </div>
-      </section>
-      <section class="project-video" data-hero-fade>
-        <div class="project-video__frame">${video}</div>
-      </section>
-      <section class="project-body">
-        <div class="container project-body__grid">
-          ${(p.sections || []).map((s, k) => `<div class="pblock" data-reveal><h2><span class="mono">0${k + 1}</span>${esc(s.titre)}</h2><p>${esc(s.texte)}</p></div>`).join('')}
+          <div class="project-body__grid">
+            ${(p.sections || []).map(s => `<div class="pblock" data-reveal><h2>${esc(s.titre)}</h2><p>${esc(s.texte)}</p></div>`).join('')}
+          </div>
         </div>
         ${gallery}
       </section>
-      <a class="next section--dark" href="projet.html?p=${encodeURIComponent(next.slug)}" data-cursor="Suivant">
+      <a class="next section--dark" href="projet.html?p=${encodeURIComponent(next.slug)}">
         <div class="glow glow--dark" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="container" style="position:relative;z-index:2">
           <p class="eyebrow mono next__label">Projet suivant</p>
-          <div class="next__title"><span class="display">${esc(next.titre)}</span><span class="next__arrow">${arrowSvg}</span></div>
+          <div class="next__title"><span class="display">${esc(next.titre)}</span>${next.poster ? `<img class="next__thumb" src="${esc(next.poster)}" alt="" loading="lazy">` : ''}<span class="next__arrow">${arrowSvg}</span></div>
         </div>
       </a>`;
   }
@@ -491,7 +492,7 @@
     if (!frame) return;
     frame.addEventListener('click', () => {
       const s = D.showreel || {};
-      openLightbox({ type: 'video', src: s.video || s.extraitComplet || s.extrait });
+      openLightbox({ type: 'video', src: s.video || s.apercu });
     });
     if (!hasGsap || reduced || innerWidth < 720) return;
     const pin = $('.showreel__pin');
@@ -635,43 +636,6 @@
     measure(); measureLinks(); update(scrollY);
     onFrame(update);
     if (hasGsap) ScrollTrigger.addEventListener('refresh', refreshLayout);
-  }
-
-  /* ------------------------------------------------------------------ */
-  /* Curseur personnalisé + boutons magnétiques                          */
-  /* ------------------------------------------------------------------ */
-  function initCursor() {
-    if (!finePointer || reduced) return;
-    const c = $('.cursor');
-    const label = $('.cursor__label');
-    document.body.classList.add('has-cursor');
-    let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
-    addEventListener('mousemove', e => {
-      x = e.clientX; y = e.clientY;
-      const t = e.target instanceof Element ? e.target : null;
-      const lab = t && t.closest('[data-cursor]');
-      const link = t && t.closest('a, button, [role="button"]');
-      c.classList.toggle('is-label', !!lab);
-      c.classList.toggle('is-link', !lab && !!link);
-      c.classList.toggle('on-dark', !!(t && t.closest('.section--dark, .lightbox')));
-      if (lab) label.textContent = lab.dataset.cursor;
-    }, { passive: true });
-    document.addEventListener('mouseleave', () => c.classList.add('is-hidden'));
-    document.addEventListener('mouseenter', () => c.classList.remove('is-hidden'));
-    const loop = () => {
-      cx += (x - cx) * .2; cy += (y - cy) * .2;
-      c.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
-      requestAnimationFrame(loop);
-    };
-    loop();
-
-    $$('.magnetic').forEach(el => {
-      el.addEventListener('mousemove', e => {
-        const r = el.getBoundingClientRect();
-        el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
   }
 
   /* ------------------------------------------------------------------ */
@@ -934,7 +898,6 @@
   initScroll();
   initMenu();
   initNav();
-  initCursor();
   initVideos();
   initDragScroll();
   initLightbox();

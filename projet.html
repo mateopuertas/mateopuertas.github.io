@@ -13,6 +13,7 @@
   <link rel="preload" href="assets/fonts/instrument-serif-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/projet.html*"},"eagerness":"moderate"}]}</script>
   <script>
     try { localStorage.removeItem('theme'); if (sessionStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
     document.documentElement.classList.add('js');
@@ -20,7 +21,6 @@
 </head>
 <body data-page="projet">
 
-  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
   <header class="nav" data-nav>
     <a href="index.html" class="nav__logo" aria-label="Matéo Puertas, accueil">
@@ -38,7 +38,7 @@
         <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
       </button>
-      <a href="index.html#contact" class="btn btn--fill btn--sm magnetic nav__cta">Me contacter</a>
+      <a href="index.html#contact" class="btn btn--fill btn--sm nav__cta">Me contacter</a>
       <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
     </div>
   </header>
@@ -62,6 +62,14 @@
     <a href="mentions-legales.html" class="link-arrow">Mentions légales</a>
     <a href="index.html" class="link-arrow">Accueil ↗</a>
   </footer>
+
+  <!-- ============ LECTEUR ============ -->
+  <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="Lecteur vidéo">
+    <button class="lightbox__close" type="button" aria-label="Fermer" data-lightbox-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lightbox__stage" data-lightbox-stage></div>
+  </div>
 
   <script src="assets/vendor/gsap.min.js"></script>
   <script src="assets/vendor/ScrollTrigger.min.js"></script>

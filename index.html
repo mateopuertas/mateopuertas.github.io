@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="preload" href="assets/videos/hero-reel.mp4" as="video" type="video/mp4">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Matéo Puertas", "url": "https://mateopuertas.github.io/", "image": "https://mateopuertas.github.io/assets/img/mateo.jpg", "jobTitle": "Monteur vidéo et motion designer", "email": "mailto:puertasmateo.pro@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Béziers", "addressCountry": "FR"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "IUT de Béziers"}, "knowsAbout": ["Montage vidéo", "Motion design", "After Effects", "Premiere Pro", "Création de contenu"], "sameAs": ["https://www.linkedin.com/in/mat%C3%A9o-puertas/", "https://www.youtube.com/@dingofps1"]}</script>
+  <script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/projet.html*"},"eagerness":"moderate"}]}</script>
   <script>
     /* Mode jour à l'arrivée ; le mode nuit choisi est gardé pendant la visite */
     try {
@@ -33,8 +35,6 @@
 </head>
 <body>
 
-  <!-- ============ CURSEUR ============ -->
-  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
   <!-- ============ NAVIGATION ============ -->
   <header class="nav" data-nav>
@@ -53,7 +53,7 @@
         <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
       </button>
-      <a href="#contact" class="btn btn--fill btn--sm magnetic nav__cta">Me contacter</a>
+      <a href="#contact" class="btn btn--fill btn--sm nav__cta">Me contacter</a>
       <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
     </div>
   </header>
@@ -96,11 +96,11 @@
           <div class="hero__foot" data-hero-fade>
             <p class="hero__sub"><strong>Matéo Puertas</strong> · monteur, motion designer & créateur de contenu</p>
             <div class="btn-row">
-              <a href="#showreel" class="btn btn--fill magnetic">
+              <a href="#showreel" class="btn btn--fill">
                 <svg viewBox="0 0 24 24" class="i-play" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
                 Voir le showreel
               </a>
-              <a href="#contact" class="btn btn--ghost magnetic">Me contacter</a>
+              <a href="#contact" class="btn btn--ghost">Me contacter</a>
             </div>
           </div>
         </div>
@@ -149,13 +149,13 @@
       <div class="showreel__pin">
         <div class="glow glow--dark" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="showreel__head container">
-          <h2 class="heading-lg" data-split>Le meilleur, <em>en une minute.</em></h2>
+          <h2 class="heading-lg" data-split>Le meilleur, <em>en 45 secondes.</em></h2>
         </div>
-        <div class="showreel__frame" data-showreel data-cursor="Lecture">
+        <div class="showreel__frame" data-showreel>
           <video muted loop playsinline preload="metadata" data-showreel-video></video>
           <div class="showreel__ui">
-            <span class="mono showreel__badge" data-showreel-badge>Extrait · Pub Lindt</span>
-            <button class="play-btn" type="button" aria-label="Lire la vidéo avec le son">
+            <span class="mono showreel__badge" data-showreel-badge>Showreel 2026</span>
+            <button class="play-btn" type="button" aria-label="Voir le showreel en grand">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
             </button>
             <span class="mono showreel__tc" data-live-tc>00:00:00:00</span>
@@ -273,7 +273,7 @@
                 <div><dt>Lieu</dt><dd>Béziers, Narbonne, Montpellier ou télétravail</dd></div>
                 <div><dt>Ensuite</dt><dd>Alternance en 3<sup>e</sup> année</dd></div>
               </dl>
-              <a href="assets/cv/CV-Mateo-Puertas.pdf" class="btn btn--fill magnetic" download data-cv>
+              <a href="assets/cv/CV-Mateo-Puertas.pdf" class="btn btn--fill" download data-cv>
                 <svg viewBox="0 0 24 24" class="i-dl" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
                 Télécharger mon CV
               </a>
@@ -289,15 +289,15 @@
       <div class="container contact__inner">
         <div class="contact__sign" data-logo-anim aria-hidden="true"></div>
         <h2 class="display contact__title" data-split>Un stage, un projet, <em>une idée ?</em></h2>
-        <button class="contact__mail" type="button" data-copy-mail data-cursor="Copier">
+        <button class="contact__mail" type="button" data-copy-mail>
           <span data-mail-text>puertasmateo.pro@gmail.com</span>
           <span class="contact__copy mono" data-copy-label>Copier</span>
         </button>
         <div class="btn-row btn-row--center">
-          <a href="mailto:puertasmateo.pro@gmail.com" class="btn btn--light magnetic" data-mailto>Écrire un mail</a>
-          <a href="assets/cv/CV-Mateo-Puertas.pdf" class="btn btn--ghost-light magnetic" download data-cv>Mon CV ↓</a>
-          <a href="https://www.linkedin.com/in/mat%C3%A9o-puertas/" target="_blank" rel="noopener" class="btn btn--ghost-light magnetic">LinkedIn ↗</a>
-          <a href="https://www.youtube.com/@dingofps1" target="_blank" rel="noopener" class="btn btn--ghost-light magnetic">YouTube ↗</a>
+          <a href="mailto:puertasmateo.pro@gmail.com" class="btn btn--light" data-mailto>Écrire un mail</a>
+          <a href="assets/cv/CV-Mateo-Puertas.pdf" class="btn btn--ghost-light" download data-cv>Mon CV ↓</a>
+          <a href="https://www.linkedin.com/in/mat%C3%A9o-puertas/" target="_blank" rel="noopener" class="btn btn--ghost-light">LinkedIn ↗</a>
+          <a href="https://www.youtube.com/@dingofps1" target="_blank" rel="noopener" class="btn btn--ghost-light">YouTube ↗</a>
         </div>
       </div>
       <footer class="footer container">
