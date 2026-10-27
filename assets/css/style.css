@@ -546,6 +546,7 @@ section { position: relative; }
 .tool__ic--ae { background: #1d0b3a; color: #c9a5ff; }
 .tool__ic--pr { background: #1d0b3a; color: #b6a9ff; }
 .tool__ic--ps { background: #071d33; color: #6fc7ff; }
+.tool__ic--ai { background: #2b1300; color: #ff9a00; }
 .path { margin-top: 56px; }
 .path ul { list-style: none; margin: 0; padding: 0; position: relative; }
 .path ul::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
@@ -946,3 +947,8 @@ video::cue { font-family: var(--sans); font-size: 1.05em; line-height: 1.35; bac
 
 /* Transition carte → page projet (navigateurs compatibles) */
 ::view-transition-group(*) { animation-duration: .7s; animation-timing-function: cubic-bezier(.7,0,.2,1); }
+
+/* Projets de design : grande image à la place de la vidéo */
+.project-video__frame > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery__item:last-child:nth-child(odd) { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+@media (max-width: 720px) { .gallery__item:last-child:nth-child(odd) { aspect-ratio: 16 / 9; } }

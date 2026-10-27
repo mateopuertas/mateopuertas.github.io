@@ -94,7 +94,7 @@
               <div>
                 <h3 class="pcard__title">${esc(p.titre)}</h3>
                 <p class="pcard__desc">${esc(p.accroche)}</p>
-                <div class="pcard__meta mono"><span>${esc(p.annee)}</span><span>${esc(p.duree)}</span><span>${esc((p.outils || []).join(' · '))}</span></div>
+                <div class="pcard__meta mono">${[p.annee, p.duree, (p.outils || []).join(' · ')].filter(Boolean).map(t => `<span>${esc(t)}</span>`).join('')}</div>
               </div>
               <span class="pcard__arrow">${arrowSvg}</span>
             </div>
@@ -216,7 +216,7 @@
     if (i < 0) { location.replace('index.html#motion'); return; }
     const p = list[i];
     const next = list[(i + 1) % list.length];
-    const catLabel = p.categorie === 'motion' ? 'Motion design' : 'Montage vidéo';
+    const catLabel = { motion: 'Motion design', montage: 'Montage vidéo', design: 'Identité visuelle' }[p.categorie] || '';
     document.title = `${p.titre} — Matéo Puertas`;
 
     const words = p.titre.split(' ');
@@ -224,6 +224,7 @@
 
     const video = p.video
       ? `<video controls playsinline preload="metadata" crossorigin="anonymous" ${p.poster ? `poster="${esc(p.poster)}"` : ''} src="${esc(p.video)}" data-track="video/${esc(p.slug)}">${p.sousTitres ? `<track kind="subtitles" srclang="fr" label="Français" src="${esc(p.sousTitres)}" default>` : ''}</video>`
+      : p.image ? `<img src="${esc(p.image)}" alt="${esc(p.titre)}">`
       : placeholder(titleHtml, { label: p.statut || 'Bientôt en ligne', meta: p.duree });
 
     const shots = (p.galerie || []).filter(g => g.src);
@@ -252,7 +253,7 @@
         <div class="container">
           <dl class="project-meta" data-reveal>
             <div><dt>Rôle</dt><dd>${esc(p.role)}</dd></div>
-            <div><dt>Durée · format</dt><dd>${esc(p.duree)} · ${esc(p.format)}</dd></div>
+            ${p.duree ? `<div><dt>Durée · format</dt><dd>${esc(p.duree)} · ${esc(p.format)}</dd></div>` : `<div><dt>Livrables</dt><dd>${esc(p.format)}</dd></div>`}
             <div><dt>Outils</dt><dd>${esc((p.outils || []).join(', '))}</dd></div>
             <div><dt>Année · cadre</dt><dd>${esc(p.annee)} · ${esc(p.equipe)}</dd></div>
           </dl>
